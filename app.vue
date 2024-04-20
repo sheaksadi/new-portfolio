@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import SectionHeader from "~/components/section-header.vue";
 import Contacts from "~/components/contacts.vue";
+import About from "~/components/about.vue";
 
 const sections = [
   {
@@ -24,7 +25,7 @@ let sectionRefs = ref({});
 
 let highlightedSections = ref([]);
 let selectedSection = ref("");
-
+const blob = ref(null);
 onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -36,28 +37,49 @@ onMounted(() => {
       {
         rootMargin: "0px 0px -90% 0px",
       })
-  document.querySelectorAll(".section h2").forEach((section) => {
+  document.querySelectorAll(".section").forEach((section) => {
     observer.observe(section)
     console.log("section", section)
   });
+
+
+  const animateBlob = ( clientX: number, clientY: number ) => {
+    // @ts-ignore
+    blob?.value?.animate({
+      left: `${clientX}px`,
+      top: `${clientY}px`
+    }, {duration: 3000, fill: "forwards"});
+  }
+
+  window.onpointermove = (e) => {
+    animateBlob(e.clientX, e.clientY)
+  };
+  window.ontouchstart = (e) => {
+    console.log("touch", e)
+    if (e.changedTouches.length > 0)
+      animateBlob(e.changedTouches[0].clientX, e.changedTouches[0].clientY)
+  };
 })
 
 const onSectionClick = (sectionId: string) => {
   // @ts-ignore
-   const section = sectionRefs.value[sectionId];
-   section.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+  const section = sectionRefs.value[sectionId];
+
+  section.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' })
+
 }
 </script>
 <template>
   <div class="h-screen w-full ">
-    <div class="container mx-auto flex h-full w-full items-center justify-center gap-2 overflow-auto">
-      <div class="flex h-full items-center w-[36rem] sticky top-0">
-        <div class="flex w-full flex-col justify-between h-[32rem] sticky top-0">
-          <div class="w-full text-gray-500">
-            <h1 class="text-6xl font-bold text-white">SHEAK SADI</h1>
-            <h2 class="text-2xl">Lorem ipsum dolor.</h2>
-            <h2 class="text-2xl">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor temporibus ullam
-              vel?</h2>
+
+
+    <div class="container mx-auto flex flex-col sm:flex-row h-full w-full items-center justify-center gap-2 overflow-auto">
+      <div class="flex h-full items-center w-[34rem] sticky top-0">
+        <div class="flex w-full flex-col justify-between h-[32rem] ">
+          <div class="w-full text-gray-500 select-none">
+            <h1 class="text-6xl font-bold text-gray-200">Sheak Sadi</h1>
+            <h2 class="text-2xl mt-3 text-gray-400">Software Developer</h2>
+            <h2 class=" mt-3 ">Currently working part time at <br><a class="hover:text-gray-300" href="https://www.netpoint-media.de/">Net Point Media GMBH</a></h2>
           </div>
           <div class="w-full ">
             <SectionHeader
@@ -70,8 +92,6 @@ const onSectionClick = (sectionId: string) => {
                 :id="section.id"
                 @click="onSectionClick(section.id)"
             ></SectionHeader>
-
-
           </div>
           <div class="h-10 w-full  flex  gap-2">
             <Contacts></Contacts>
@@ -80,39 +100,66 @@ const onSectionClick = (sectionId: string) => {
         </div>
 
       </div>
-      <div class="w-[36rem] h-full">
+      <div class=" flex flex-col max-h-full">
+        <div class="w-[36rem]  section my-2" :id="section.id" v-for="section in sections" :key="section.id" :ref="(el) => (sectionRefs[section.id] = el)">
+          <div class="h-screen flex justify-center items-center">
+            <About></About>
+          </div>
 
-        <section class="section mt-28 bg-green-600" v-for="section in sections"  :key="section.id">
-          <h2 :id="section.id" class="text-2xl font-bold text-white " :ref="(el) => (sectionRefs[section.id] = el)" >
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut dolorum eligendi fugit hic
-            numquam pariatur quas ut! Aliquid, aperiam aut blanditiis debitis dicta doloremque enim error exercitationem
-            expedita facere illum iste itaque laborum magni minus neque nihil nulla omnis placeat quam quas quibusdam
-            reiciendis repellendus saepe sed sunt totam veniam. Accusamus adipisci aliquam aperiam architecto aspernatur
-            beatae blanditiis consequatur, cum deserunt dolorem doloremque dolores ducimus eligendi explicabo fugiat id
-            ipsum iure maiores maxime molestias necessitatibus nesciunt nisi officiis, optio placeat praesentium
-            quaerat, reiciendis repellat sequi sit sunt tenetur ullam voluptatem. Dolores laudantium minus nam rerum. Ab
-            aperiam asperiores, cumque cupiditate doloribus eum iure laudantium libero nemo nihil odit optio placeat
-            quos rem sed totam veniam, voluptatum. Est, ex, id. Eaque eius maiores neque quibusdam quisquam repudiandae
-            sed suscipit! A aliquid autem commodi corporis dolore ea earum eius esse, explicabo fugit id in inventore,
-            ipsa laudantium magnam natus odio porro praesentium soluta temporibus! Enim ex laboriosam minima officia
-            quidem rerum saepe vel? Adipisci architecto beatae consequatur et fugiat ipsum iste minus neque pariatur
-            perferendis placeat possimus quis rerum sed similique, vitae, voluptas voluptate voluptatibus! Accusantium
-            adipisci aliquid animi aperiam atque consectetur deserunt dolore doloremque dolores ea et eum expedita hic,
-            id ipsam laborum laudantium magnam nam natus placeat porro, quas quia sit tempora, tempore totam ullam ut
-            veritatis vero voluptatem? Amet eaque eligendi excepturi id ipsa iste modi molestiae mollitia nam nemo nihil
-            obcaecati, placeat quaerat quasi reiciendis rem repellendus sint totam unde voluptate. Ab accusantium amet,
-            at atque consectetur dolor ducimus eius eligendi ex iste iure necessitatibus neque nostrum obcaecati officia
-            provident quisquam rem sed soluta suscipit tenetur unde velit veritatis voluptate voluptatem voluptatibus
-            voluptatum! Beatae earum illum natus neque sequi! Dolorum molestias nam nostrum quam veniam. Doloribus eaque
-            eius maxime pariatur sapiente! Ad amet inventore, modi obcaecati porro sed.</h2>
-        </section>
+
+        </div>
       </div>
+
     </div>
+    <div ref="blob" id="blob"></div>
+    <div id="blur"></div>
   </div>
 </template>
 <style>
 body {
-  background: rgb(51,65,85);
-  background: radial-gradient(circle, rgba(51,65,85,1) 0%, rgba(15,23,42,1) 69%);
+  background: rgb(51, 65, 85);
+  background: radial-gradient(circle, rgba(51, 65, 85, 1) 0%, rgba(15, 23, 42, 1) 69%);
+  overflow: hidden;
 }
+
+
+@keyframes rotate {
+  from {
+    rotate: 0deg;
+  }
+
+  50% {
+    scale: 1 1.5;
+  }
+
+  to {
+    rotate: 360deg;
+  }
+}
+
+#blob {
+  height: 34vmax;
+  aspect-ratio: 1;
+  position: absolute;
+  left: 30%;
+  top: 30%;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: white linear-gradient(to right, #02094f, #460246);
+  animation: rotate 20s infinite;
+  opacity: 0.8;
+  z-index: -3;
+}
+
+#blur {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: -2;
+  backdrop-filter: blur(12vmax);
+}
+
+
 </style>
