@@ -3,6 +3,8 @@ import SectionHeader from "~/components/section-header.vue";
 import Contacts from "~/components/contacts.vue";
 import About from "~/components/about.vue";
 
+
+
 const sections = [
   {
     title: "About",
@@ -79,7 +81,7 @@ const onSectionClick = (sectionId: string) => {
           <div class="w-full text-gray-500 select-none">
             <h1 class="text-6xl font-bold text-gray-200">Sheak Sadi</h1>
             <h2 class="text-2xl mt-3 text-gray-400">Software Developer</h2>
-            <h2 class=" mt-3 ">Currently working part time at <br><a class="hover:text-gray-300" href="https://www.netpoint-media.de/">Net Point Media GMBH</a></h2>
+            <h2 class=" mt-3 transition-all duration-500">Currently working part time at <br><a class="hover:text-gray-300 " href="https://www.netpoint-media.de/" target="_blank">Net Point Media GMBH</a></h2>
           </div>
           <div class="w-full ">
             <SectionHeader
@@ -111,6 +113,7 @@ const onSectionClick = (sectionId: string) => {
       </div>
 
     </div>
+    <Title>Sheak Sadi</Title>
     <div ref="blob" id="blob"></div>
     <div id="blur"></div>
   </div>
