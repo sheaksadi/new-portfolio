@@ -113,7 +113,6 @@ const onSectionClick = (sectionId: string) => {
       </div>
 
     </div>
-    <Title>Sheak Sadi</Title>
     <div ref="blob" id="blob"></div>
     <div id="blur"></div>
   </div>

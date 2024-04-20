@@ -9,4 +9,13 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: 'en'
+      },
+      title: 'Sheak Sadi',
+    }
+  }
+
 })
