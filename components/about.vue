@@ -20,7 +20,7 @@ let year = computed(() => {
                    transition-all duration-100"
     >well its complicated</span>
     </span>-year-old self-taught Software Developer, now
-      studying Computer Science and Engineering to become a super-duper wizard.
+      studying Computer Science and Engineering to become a coding wizard.
 
     </p>
     <p class=" pb-6">
