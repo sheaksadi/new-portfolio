@@ -4,7 +4,6 @@ import Contacts from "~/components/contacts.vue";
 import About from "~/components/about.vue";
 
 
-
 const sections = [
   {
     title: "About",
@@ -45,7 +44,7 @@ onMounted(() => {
   });
 
 
-  const animateBlob = ( clientX: number, clientY: number ) => {
+  const animateBlob = (clientX: number, clientY: number) => {
     // @ts-ignore
     blob?.value?.animate({
       left: `${clientX}px`,
@@ -67,7 +66,7 @@ const onSectionClick = (sectionId: string) => {
   // @ts-ignore
   const section = sectionRefs.value[sectionId];
 
-  section.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' })
+  section.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'start'})
 
 }
 </script>
@@ -75,13 +74,16 @@ const onSectionClick = (sectionId: string) => {
   <div class="h-screen w-full ">
 
 
-    <div class="container mx-auto flex flex-col sm:flex-row h-full w-full items-center justify-center gap-2 overflow-auto">
+    <div
+        class=" flex flex-col sm:flex-row h-full w-full items-center justify-center gap-2 overflow-auto scroller">
       <div class="flex h-full items-center w-[34rem] sticky top-0">
         <div class="flex w-full flex-col justify-between h-[32rem] ">
           <div class="w-full text-gray-500 select-none">
             <h1 class="text-6xl font-bold text-gray-200">Sheak Sadi</h1>
             <h2 class="text-2xl mt-3 text-gray-400">Software Developer</h2>
-            <h2 class=" mt-3 transition-all duration-500">Currently working part time at <br><a class="hover:text-gray-300 " href="https://www.netpoint-media.de/" target="_blank">Netpoint Media GmbH</a></h2>
+            <h2 class=" mt-3 transition-all duration-500">Currently working part time at <br><a
+                class="hover:text-gray-300 " href="https://www.netpoint-media.de/" target="_blank">Netpoint Media
+              GmbH</a></h2>
           </div>
           <div class="w-full ">
             <SectionHeader
@@ -103,7 +105,8 @@ const onSectionClick = (sectionId: string) => {
 
       </div>
       <div class=" flex flex-col max-h-full">
-        <div class="w-[36rem]  section my-2" :id="section.id" v-for="section in sections" :key="section.id" :ref="(el) => (sectionRefs[section.id] = el)">
+        <div class="w-[36rem]  section my-2" :id="section.id" v-for="section in sections" :key="section.id"
+             :ref="(el) => (sectionRefs[section.id] = el)">
           <div class="h-screen flex justify-center items-center">
             <About></About>
           </div>
@@ -122,6 +125,11 @@ body {
   background: rgb(51, 65, 85);
   background: radial-gradient(circle, rgba(51, 65, 85, 1) 0%, rgba(15, 23, 42, 1) 69%);
   overflow: hidden;
+  scrollbar-width: thin;
+}
+.scroller {
+
+  scrollbar-width: thin;
 }
 
 
