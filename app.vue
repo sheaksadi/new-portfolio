@@ -1,24 +1,29 @@
 <script setup lang="ts">
 import SectionHeader from "~/components/section-header.vue";
 import Contacts from "~/components/contacts.vue";
+// @ts-ignore
 import About from "~/components/about.vue";
-
+// @ts-ignore
+import Education from "~/components/education.vue";
 
 const sections = [
   {
     title: "About",
     id: "about",
-    ref: null
+    ref: null,
+    component: About
   },
   {
-    title: "Projects",
-    id: "projects",
-    ref: null
+    title: "Background",
+    id: "background",
+    ref: null,
+    component: Education
   },
   {
     title: "Contact",
     id: "contact",
-    ref: null
+    ref: null,
+    component: About
   }
 ]
 let sectionRefs = ref({});
@@ -36,7 +41,7 @@ onMounted(() => {
         })
       },
       {
-        rootMargin: "0px 0px -90% 0px",
+        rootMargin: "0px 0px -80% 0px",
       })
   document.querySelectorAll(".section").forEach((section) => {
     observer.observe(section)
@@ -64,71 +69,80 @@ onMounted(() => {
 
 const onSectionClick = (sectionId: string) => {
   // @ts-ignore
+    selectedSection.value = sectionId
   const section = sectionRefs.value[sectionId];
-
   section.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'start'})
+  navigateTo("/#" + sectionId)
 
 }
 </script>
 <template>
-  <div class="h-screen w-full ">
-
-
-    <div
-        class=" flex flex-col sm:flex-row h-full w-full items-center justify-center gap-2 overflow-auto scroller">
-      <div class="flex h-full items-center w-[34rem] sticky top-0">
-        <div class="flex w-full flex-col justify-between h-[32rem] ">
-          <div class="w-full text-gray-500 select-none">
-            <h1 class="text-6xl font-bold text-gray-200">Sheak Sadi</h1>
-            <h2 class="text-2xl mt-3 text-gray-400">Software Developer</h2>
-            <h2 class=" mt-3 transition-all duration-500">Currently working part time at <br><a
-                class="hover:text-gray-300 " href="https://www.netpoint-media.de/" target="_blank">Netpoint Media
-              GmbH</a></h2>
+  <div class="h-screen w-full overflow-y-auto" style="scrollbar-width: thin">
+    <div class="container mx-auto w-full min-h-screen px-28 ">
+      <div class="flex w-full h-full ">
+        <div class="md:sticky w-full h-[50rem] md:top-0 p-4 flex flex-col justify-between py-28">
+          <div class=" text-gray-500 select-none">
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-200">Sheak Sadi</h1>
+            <h2 class="text-xl md:text-2xl mt-2 text-gray-400">Software Developer</h2>
+            <h2 class="mt-2 transition-all duration-500">
+              Currently working part time at
+              <br class="hidden md:block"/>
+              <a
+                  class="hover:text-gray-300"
+                  href="https://www.netpoint-media.de/"
+                  target="_blank"
+              >Netpoint Media GmbH</a
+              >
+            </h2>
           </div>
-          <div class="w-full ">
+          <div class="mb-4">
             <SectionHeader
                 v-for="section in sections"
-                key="section.id"
+                :key="section.id"
                 :title="section.title"
                 :selected="highlightedSections.includes(section.id) || selectedSection === section.id"
-                @mouseover=" highlightedSections.push(section.id); "
-                @mouseleave=" highlightedSections = highlightedSections.filter(item => item !== section.id); "
+                @mouseover="highlightedSections.push(section.id)"
+                @mouseleave="highlightedSections = highlightedSections.filter(item => item !== section.id)"
                 :id="section.id"
-                @click="onSectionClick(section.id)"
-            ></SectionHeader>
+                @mousedown="onSectionClick(section.id)"
+
+            />
           </div>
-          <div class="h-10 w-full  flex  gap-2">
-            <Contacts></Contacts>
+          <div class="flex gap-2">
+            <Contacts/>
           </div>
+        </div>
+        <div class="w-full h-full pt-28 ">
+          <section
+              class="section scroll-mt-28 mb-28"
+              :id="section.id"
+              v-for="section in sections"
+              :key="section.id"
+              :ref="(el) => (sectionRefs[section.id] = el)"
+          >
+            <component :is="section.component"/>
+          </section>
 
         </div>
 
+
       </div>
-      <div class=" flex flex-col max-h-full">
-        <div class="w-[36rem]  section my-2" :id="section.id" v-for="section in sections" :key="section.id"
-             :ref="(el) => (sectionRefs[section.id] = el)">
-          <div class="h-screen flex justify-center items-center">
-            <About></About>
-          </div>
-
-
-        </div>
-      </div>
-
+      <div ref="blob" id="blob"></div>
+      <div id="blur"></div>
     </div>
-    <div ref="blob" id="blob"></div>
-    <div id="blur"></div>
+
   </div>
+
 </template>
 <style>
-body {
-  background: rgb(51, 65, 85);
-  background: radial-gradient(circle, rgba(51, 65, 85, 1) 0%, rgba(15, 23, 42, 1) 69%);
-  overflow: hidden;
+html body {
+  @apply bg-background ;
   scrollbar-width: thin;
+  overflow: hidden;
+  height: 100dvh;
 }
-.scroller {
 
+.scroller {
   scrollbar-width: thin;
 }
 
@@ -150,7 +164,7 @@ body {
 #blob {
   height: 34vmax;
   aspect-ratio: 1;
-  position: absolute;
+  position: fixed;
   left: 30%;
   top: 30%;
   translate: -50% -50%;
