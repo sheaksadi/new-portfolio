@@ -93,7 +93,7 @@ const onSectionClick = (sectionId: string) => {
     <div class="container mx-auto w-full min-h-screen px-36 ">
       <div class="flex w-full h-full ">
         <div class="md:sticky w-full h-[50rem] md:top-0 p-4 flex flex-col justify-between py-28">
-          <div class=" text-gray-500 select-none">
+          <div class=" text-gray-500">
             <h1 class="text-4xl md:text-6xl font-bold text-gray-200">Sheak Sadi</h1>
             <h2 class="text-xl md:text-2xl mt-2 text-gray-400">Software Developer</h2>
             <h2 class="mt-2 transition-all duration-500">
@@ -134,7 +134,7 @@ const onSectionClick = (sectionId: string) => {
           >
             <component :is="section.component"/>
           </section>
-          <footer class="mb-28 text-gray-600 text-sm select-none">
+          <footer class="mb-28 text-gray-600 text-sm ">
               This website was made using <a class="text-gray-500 hover:text-gray-300" href="https://nuxtjs.org/" target="_blank" >Nuxt</a>
               and <a class="text-gray-500 hover:text-gray-300" href="https://tailwindcss.com/" target="_blank">Tailwind</a>, and hosted on <a class="text-gray-500 hover:text-gray-300" href="https://vercel.com/" target="_blank">Vercel</a>,
               Website design was inspired
