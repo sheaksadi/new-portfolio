@@ -30,23 +30,33 @@ let myCv = ref([
 
     },
 ])
+let hoveringCard = ref(-1)
+const cvClick = () => {
+    alert('didnt make one yet !! ')
+}
 </script>
 
 <template>
-    <div class="flex flex-col gap-4 text-gray-400">
+    <div class="flex flex-col gap-4 text-gray-400 select-none">
         <div
                 v-for="(cv, index) in myCv"
                 :key="index"
-                class="p-4 flex "
+                class="p-4 flex hover:bg-gray-700 hover:bg-opacity-40 hover:opacity-100 group transition-all duration-300 rounded"
+                :class="{'opacity-10': hoveringCard !== index,
+                'opacity-100': hoveringCard === -1
+                } "
+                @mouseenter="hoveringCard = index"
+                @mouseleave="hoveringCard = -1"
         >
             <p class="basis-[20%]">{{ cv.year }}</p>
             <div class="basis-[80%]">
-                <h3 class="text-lg font-semibold">{{ cv.title }}</h3>
+                <h3 class="text-lg font-semibold group-hover:text-purple-700 text-gray-300">{{ cv.event }}</h3>
 
-                <p class="mt-2">{{ cv.description }}</p>
+                <p class="mt-2 group-hover:text-white">{{ cv.description }}</p>
             </div>
 
         </div>
+        <h1 @click="cvClick" class="text-xl font-semibold text-gray-300 hover:text-purple-700 underline cursor-pointer text-right">My full CV..</h1>
     </div>
 </template>
 

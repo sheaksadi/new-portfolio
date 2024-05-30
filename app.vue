@@ -4,7 +4,11 @@ import Contacts from "~/components/contacts.vue";
 // @ts-ignore
 import About from "~/components/about.vue";
 // @ts-ignore
-import Education from "~/components/education.vue";
+import Education from "~/components/background.vue";
+// @ts-ignore
+import Projects from "~/components/projects.vue";
+// @ts-ignore
+
 
 const sections = [
   {
@@ -20,10 +24,10 @@ const sections = [
     component: Education
   },
   {
-    title: "Contact",
-    id: "contact",
+    title: "Projects",
+    id: "projects",
     ref: null,
-    component: About
+    component: Projects
   }
 ]
 let sectionRefs = ref({});
@@ -36,12 +40,16 @@ onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            selectedSection.value = entry.target.id
+              if (!scrolling.value) {
+                  selectedSection.value = entry.target.id
+              }
+
           }
         })
       },
       {
-        rootMargin: "0px 0px -80% 0px",
+          "rootMargin": "-20% 0% -40% 0%",
+
       })
   document.querySelectorAll(".section").forEach((section) => {
     observer.observe(section)
@@ -66,21 +74,25 @@ onMounted(() => {
       animateBlob(e.changedTouches[0].clientX, e.changedTouches[0].clientY)
   };
 })
-
+let scrolling = ref(false)
 const onSectionClick = (sectionId: string) => {
-  // @ts-ignore
-    selectedSection.value = sectionId
+    scrolling.value = true
   const section = sectionRefs.value[sectionId];
   section.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'start'})
-  navigateTo("/#" + sectionId)
+    // @ts-ignore
+    selectedSection.value = sectionId
 
+  navigateTo("/#" + sectionId)
+  setTimeout(() => {
+    scrolling.value = false
+  },100)
 }
 </script>
 <template>
   <div class="h-screen w-full overflow-y-auto" style="scrollbar-width: thin">
-    <div class="container mx-auto w-full min-h-screen px-28 ">
+    <div class="container mx-auto w-full min-h-screen px-36 ">
       <div class="flex w-full h-full ">
-        <div class="md:sticky w-full h-[50rem] md:top-0 p-4 flex flex-col justify-between py-28">
+        <header class="md:sticky w-full h-[50rem] md:top-0 p-4 flex flex-col justify-between py-28">
           <div class=" text-gray-500 select-none">
             <h1 class="text-4xl md:text-6xl font-bold text-gray-200">Sheak Sadi</h1>
             <h2 class="text-xl md:text-2xl mt-2 text-gray-400">Software Developer</h2>
@@ -111,7 +123,7 @@ const onSectionClick = (sectionId: string) => {
           <div class="flex gap-2">
             <Contacts/>
           </div>
-        </div>
+        </header>
         <div class="w-full h-full pt-28 ">
           <section
               class="section scroll-mt-28 mb-28"
@@ -122,7 +134,12 @@ const onSectionClick = (sectionId: string) => {
           >
             <component :is="section.component"/>
           </section>
-
+          <footer class="mb-28 text-gray-600 text-sm select-none">
+              This website was made using <a class="text-gray-500 hover:text-gray-300" href="https://nuxtjs.org/" target="_blank" >Nuxt</a>
+              and <a class="text-gray-500 hover:text-gray-300" href="https://tailwindcss.com/" target="_blank">Tailwind</a>, and hosted on <a class="text-gray-500 hover:text-gray-300" href="https://vercel.com/" target="_blank">Vercel</a>,
+              Website design was inspired
+              <a class="text-gray-500 hover:text-gray-300" href="https://brittanychiang.com/" target="_blank">Brittany Chiang</a>
+          </footer>
         </div>
 
 
@@ -141,11 +158,6 @@ html body {
   overflow: hidden;
   height: 100dvh;
 }
-
-.scroller {
-  scrollbar-width: thin;
-}
-
 
 @keyframes rotate {
   from {
