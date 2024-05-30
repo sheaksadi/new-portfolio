@@ -106,7 +106,7 @@ const atCardClick = (url: any) => {
 </script>
 
 <template>
-    <div class="flex flex-col gap-4 text-gray-400 select-none ">
+    <div class="flex flex-col gap-4 text-gray-400  ">
 
         <div
                 v-for="(project, index) in projects"

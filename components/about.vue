@@ -12,7 +12,7 @@ let year = computed(() => {
 </script>
 
 <template>
-  <div class="text-gray-400 text-lg select-none">
+  <div class="text-gray-400 text-lg ">
     <!--    <h1 class="pt-2 text-4xl">Hi there, I'm Sheak Sadi</h1>-->
     <p class=" pb-6 relative">I'm an <span class="text-gray-200 group relative">{{ myAge }}
     <span class="absolute bg-slate-800 top-[-100%] left-[-100%] inline-block text-nowrap

@@ -37,7 +37,7 @@ const cvClick = () => {
 </script>
 
 <template>
-    <div class="flex flex-col gap-4 text-gray-400 select-none">
+    <div class="flex flex-col gap-4 text-gray-400 ">
         <div
                 v-for="(cv, index) in myCv"
                 :key="index"
