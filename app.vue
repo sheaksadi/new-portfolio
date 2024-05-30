@@ -136,9 +136,7 @@ const onSectionClick = (sectionId: string) => {
           </section>
           <footer class="mb-28 text-gray-600 text-sm ">
               This website was made using <a class="text-gray-500 hover:text-gray-300" href="https://nuxtjs.org/" target="_blank" >Nuxt</a>
-              and <a class="text-gray-500 hover:text-gray-300" href="https://tailwindcss.com/" target="_blank">Tailwind</a>, and hosted on <a class="text-gray-500 hover:text-gray-300" href="https://vercel.com/" target="_blank">Vercel</a>,
-              Website design was inspired
-              <a class="text-gray-500 hover:text-gray-300" href="https://brittanychiang.com/" target="_blank">Brittany Chiang</a>
+              and <a class="text-gray-500 hover:text-gray-300" href="https://tailwindcss.com/" target="_blank">Tailwind</a>, and hosted on <a class="text-gray-500 hover:text-gray-300" href="https://vercel.com/" target="_blank">Vercel</a>.
           </footer>
         </div>
 
