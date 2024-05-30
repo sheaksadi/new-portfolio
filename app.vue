@@ -92,7 +92,7 @@ const onSectionClick = (sectionId: string) => {
   <div class="h-screen w-full overflow-y-auto" style="scrollbar-width: thin">
     <div class="container mx-auto w-full min-h-screen px-36 ">
       <div class="flex w-full h-full ">
-        <header class="md:sticky w-full h-[50rem] md:top-0 p-4 flex flex-col justify-between py-28">
+        <div class="md:sticky w-full h-[50rem] md:top-0 p-4 flex flex-col justify-between py-28">
           <div class=" text-gray-500 select-none">
             <h1 class="text-4xl md:text-6xl font-bold text-gray-200">Sheak Sadi</h1>
             <h2 class="text-xl md:text-2xl mt-2 text-gray-400">Software Developer</h2>
@@ -123,7 +123,7 @@ const onSectionClick = (sectionId: string) => {
           <div class="flex gap-2">
             <Contacts/>
           </div>
-        </header>
+        </div>
         <div class="w-full h-full pt-28 ">
           <section
               class="section scroll-mt-28 mb-28"

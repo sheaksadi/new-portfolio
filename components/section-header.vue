@@ -25,15 +25,14 @@ let getColor = computed(() => {
 </script>
 
 <template>
-  <a
-
+  <div
       :class="getColor"
       class="flex h-12 w-48 items-center transition-all duration-400 cursor-pointer select-none"  >
 
     <div :class="getLineStyle" class="h-[0.10rem] transition-all duration-500"></div>
     <h1 class="mx-3 font-bold text-xs">{{props.title.toUpperCase()}}</h1>
 
-  </a>
+  </div>
 </template>
 
 <style scoped>

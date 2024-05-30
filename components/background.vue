@@ -56,7 +56,7 @@ const cvClick = () => {
             </div>
 
         </div>
-        <h1 @click="cvClick" class="text-xl font-semibold text-gray-300 hover:text-purple-700 underline cursor-pointer text-right">My full CV..</h1>
+        <h1 @click="cvClick" class="text-xl font-semibold text-gray-300 hover:text-purple-700 underline cursor-pointer">My full CV..</h1>
     </div>
 </template>
 
