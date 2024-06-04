@@ -27,10 +27,10 @@ let getColor = computed(() => {
 <template>
   <div
       :class="getColor"
-      class="flex h-12 w-48 items-center transition-all duration-400 cursor-pointer select-none"  >
+      class="flex h-12 w-48 cursor-pointer select-none items-center transition-all duration-400"  >
 
-    <div :class="getLineStyle" class="h-[0.10rem] transition-all duration-500"></div>
-    <h1 class="mx-3 font-bold text-xs">{{props.title.toUpperCase()}}</h1>
+    <div :class="getLineStyle" class="transition-all duration-500 h-[0.10rem]"></div>
+    <h1 class="mx-3 text-xs font-bold">{{props.title.toUpperCase()}}</h1>
 
   </div>
 </template>

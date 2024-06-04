@@ -53,14 +53,15 @@ function atBtnClick(contact: { newWindow: any; url: string; }) {
 </script>
 
 <template>
-  <button
-      @click="atBtnClick(contact)"
+  <a
+      :href="contact.url"
+      target="_blank"
       v-for="contact in contacts"
       :key="contact.id"
-      class="h-full w-12 flex justify-center items-center group relative">
-    <Icon :name="contact.icon"  class="w-8 h-8 text-gray-400 group-hover:text-white transition-all duration-200"  />
-    <span class="scale-0 group-hover:scale-100 transition-all duration-100 absolute bottom-[-3rem] text-white bg-purple-600 rounded p-1">{{contact.siteUserName}}</span>
-  </button>
+      class="relative flex h-full w-12 items-center justify-center group">
+    <Icon :name="contact.icon"  class="h-8 w-8 text-gray-400 transition-all duration-200 group-hover:text-white"  />
+<!--    <span class="absolute scale-0 rounded bg-purple-600 p-1 text-white transition-all duration-100 bottom-[-3rem] group-hover:scale-100">{{contact.siteUserName}}</span>-->
+  </a>
 </template>
 
 <style scoped>

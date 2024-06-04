@@ -90,15 +90,15 @@ const onSectionClick = (sectionId: string) => {
 </script>
 <template>
   <div class="h-screen w-full overflow-y-auto" style="scrollbar-width: thin">
-    <div class="container mx-auto w-full min-h-screen px-36 ">
-      <div class="flex w-full h-full ">
-        <div class="md:sticky w-full h-[50rem] md:top-0 p-4 flex flex-col justify-between py-28">
-          <div class=" text-gray-500">
-            <h1 class="text-4xl md:text-6xl font-bold text-gray-200">Sheak Sadi</h1>
-            <h2 class="text-xl md:text-2xl mt-2 text-gray-400">Software Developer</h2>
+    <div class="min-h-screen w-full px-4 lg:container lg:mx-auto lg:px-36">
+      <div class="flex h-full w-full flex-col lg:flex-row">
+        <div class="flex w-full flex-col justify-between p-4 pt-28 h-[36rem] lg:h-[50rem] lg:sticky lg:top-0 lg:py-28">
+          <div class="text-gray-500">
+            <h1 class="cursor-pointer text-5xl font-bold text-gray-200 md:text-6xl" @click="() => onSectionClick('about')">Sheak Sadi</h1>
+            <h2 class="mt-2 text-xl text-gray-400 md:text-2xl">Software Developer</h2>
             <h2 class="mt-2 transition-all duration-500">
               Currently working part time at
-              <br class="hidden md:block"/>
+              <br class=""/>
               <a
                   class="hover:text-gray-300"
                   href="https://www.netpoint-media.de/"
@@ -124,19 +124,23 @@ const onSectionClick = (sectionId: string) => {
             <Contacts/>
           </div>
         </div>
-        <div class="w-full h-full pt-28 ">
+        <div class="h-full w-full pt-28">
           <section
-              class="section scroll-mt-28 mb-28"
+              class="mb-28 section md:scroll-mt-28"
               :id="section.id"
               v-for="section in sections"
               :key="section.id"
               :ref="(el) => (sectionRefs[section.id] = el)"
           >
+              <div class="lg:hidden">
+                <h1 class="text-3xl font-bold mb-4 text-blue-300 lg:hidden">{{ section.title }}</h1>
+              </div>
             <component :is="section.component"/>
           </section>
-          <footer class="mb-28 text-gray-600 text-sm ">
+          <footer class="mb-28 text-sm text-gray-600">
               This website was made using <a class="text-gray-500 hover:text-gray-300" href="https://nuxtjs.org/" target="_blank" >Nuxt</a>
               and <a class="text-gray-500 hover:text-gray-300" href="https://tailwindcss.com/" target="_blank">Tailwind</a>, and hosted on <a class="text-gray-500 hover:text-gray-300" href="https://vercel.com/" target="_blank">Vercel</a>.
+              Website code is available on <a class="text-gray-500 hover:text-gray-300" href="https://github.com/sheaksadi/new-portfolio" target="_blank">Github</a>.
           </footer>
         </div>
 
@@ -148,13 +152,15 @@ const onSectionClick = (sectionId: string) => {
 
   </div>
 
+  <NuxtPage />
 </template>
 <style>
 html body {
-  @apply bg-background ;
+  @apply bg-background;
   scrollbar-width: thin;
   overflow: hidden;
   height: 100dvh;
+    font-family: "Akkurat LL", serif;
 }
 
 @keyframes rotate {

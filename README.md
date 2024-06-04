@@ -2,13 +2,16 @@
 
 Hosted website [Sheak sadi](https://sadi.dev) 
 "[https://sadi.dev](https://sadi.dev)"
+
+View website code at [Github](https://github.com/sheaksadi/new-portfolio)
+
 ```
 #link
 https://sadi.dev
-
+https://github.com/sheaksadi/new-portfolio
 ```
 
-## Install Dependencies
+## Run website locally
 
 Make sure to install the dependencies:
 ```bash
@@ -16,9 +19,6 @@ Make sure to install the dependencies:
 npm install
 
 ```
-
-## Development Server
-
 Start the development server on `http://localhost:3000`:
 
 ```bash

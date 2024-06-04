@@ -37,11 +37,11 @@ const cvClick = () => {
 </script>
 
 <template>
-    <div class="flex flex-col gap-4 text-gray-400 ">
+    <div class="flex flex-col gap-4 text-gray-400">
         <div
                 v-for="(cv, index) in myCv"
                 :key="index"
-                class="p-4 flex hover:bg-gray-700 hover:bg-opacity-40 hover:opacity-100 group transition-all duration-300 rounded"
+                class="relative flex rounded p-4 transition-all duration-300 group hover:bg-white hover:bg-opacity-10 hover:opacity-100 hover:shadow-xl"
                 :class="{'opacity-10': hoveringCard !== index,
                 'opacity-100': hoveringCard === -1
                 } "
@@ -50,13 +50,13 @@ const cvClick = () => {
         >
             <p class="basis-[20%]">{{ cv.year }}</p>
             <div class="basis-[80%]">
-                <h3 class="text-lg font-semibold group-hover:text-purple-700 text-gray-300">{{ cv.event }}</h3>
+                <h3 class="text-lg font-semibold text-gray-300 group-hover:text-blue-500">{{ cv.event }}</h3>
 
-                <p class="mt-2 group-hover:text-white">{{ cv.description }}</p>
+                <p class="mt-2 group-hover:text-gray-300">{{ cv.description }}</p>
             </div>
 
         </div>
-        <h1 @click="cvClick" class="text-xl font-semibold text-gray-300 hover:text-purple-700 underline cursor-pointer">My full CV..</h1>
+        <h1 @click="cvClick" class="cursor-pointer text-xl font-semibold text-gray-300 underline hover:text-purple-700">My full CV..</h1>
     </div>
 </template>
 

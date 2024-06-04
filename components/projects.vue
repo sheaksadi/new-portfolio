@@ -106,14 +106,15 @@ const atCardClick = (url: any) => {
 </script>
 
 <template>
-    <div class="flex flex-col gap-4 text-gray-400  ">
+    <div class="flex flex-col gap-4 text-gray-400">
 
         <div
                 v-for="(project, index) in projects"
                 :key="index"
-                class="p-4 flex hover:bg-gray-700 hover:bg-opacity-40 hover:opacity-100 group transition-all duration-300 rounded relative"
+                class="relative flex rounded p-4 transition-all duration-300 group hover:bg-white hover:bg-opacity-10 hover:opacity-100 hover:shadow-xl"
                 :class="{'opacity-10': hoveringCard !== index,
-                'opacity-100': hoveringCard === -1
+                'opacity-100': hoveringCard === -1,
+                'cursor-pointer': project.url
                 } "
                 @mouseenter="hoveringCard = index"
                 @mouseleave="hoveringCard = -1"
@@ -122,20 +123,20 @@ const atCardClick = (url: any) => {
             <div v-if="project.url" class="absolute top-0 right-2 hidden group-hover:block">
                 <Icon name="mdi:link" class="text-xl"/>
             </div>
-            <div class="basis-[20%] p-2 pl-0 pr-3">
+            <div class="p-2 pr-3 pl-0 basis-[20%]">
                 <img :src="project.image" alt="project image">
             </div>
             <div class="basis-[80%]">
-                <h3 class="text-lg font-semibold group-hover:text-purple-700 text-gray-300">{{ project.name }}</h3>
+                <h3 class="text-lg font-semibold text-gray-300 group-hover:text-blue-500">{{ project.name }}</h3>
 
-                <p class="mt-2 group-hover:text-white">{{ project.description }}</p>
-                <div class="flex gap-2">
+                <p class="mt-2 group-hover:text-gray-300">{{ project.description }}</p>
+                <div class="mt-4 flex flex-wrap gap-2 ">
                     <a
                         v-for="(skill, index) in project.skills"
                         :key="index"
                         :href="skill.url"
                         target="_blank"
-                        class="text-purple-500 hover:text-gray-200 px-4 py-1 rounded bg-purple-400 bg-opacity-20 mt-4 flex justify-center items-center"
+                        class="flex flex-nowrap items-center justify-center rounded bg-blue-500 bg-opacity-20 px-1 text-sm text-blue-500 group-hover:bg-opacity-10  hover:text-blue-200 md:px-4 md:py-1 md:text-base"
                     >
                         {{ skill.name }}
                     </a>
