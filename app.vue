@@ -103,8 +103,7 @@ const onSectionClick = (sectionId: string) => {
                   class="hover:text-gray-300"
                   href="https://www.netpoint-media.de/"
                   target="_blank"
-              >Netpoint Media GmbH</a
-              >
+              >Netpoint Media GmbH</a>
             </h2>
           </div>
           <div class="mb-4">
