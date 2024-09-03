@@ -32,14 +32,14 @@ const contacts  = [
     siteUserName: "@sheaksadi",
     newWindow: true,
   },
-  {
-    title: "Twitter",
-    icon: "pajamas:twitter",
-    id: "twitter",
-    url: "https://twitter.com/sheaksadi",
-    siteUserName: "sheaksadi",
-    newWindow: true,
-  },
+  // {
+  //   title: "Twitter",
+  //   icon: "pajamas:twitter",
+  //   id: "twitter",
+  //   url: "https://twitter.com/sheaksadi",
+  //   siteUserName: "sheaksadi",
+  //   newWindow: true,
+  // },
 
 ]
 function atBtnClick(contact: { newWindow: any; url: string; }) {
@@ -50,6 +50,8 @@ function atBtnClick(contact: { newWindow: any; url: string; }) {
   }
 
 }
+
+
 </script>
 
 <template>
@@ -62,6 +64,15 @@ function atBtnClick(contact: { newWindow: any; url: string; }) {
     <Icon :name="contact.icon"  class="h-8 w-8 text-gray-400 transition-all duration-200 group-hover:text-white"  />
 <!--    <span class="absolute scale-0 rounded bg-purple-600 p-1 text-white transition-all duration-100 bottom-[-3rem] group-hover:scale-100">{{contact.siteUserName}}</span>-->
   </a>
+  <button
+
+      @click="() => $emit('openModal')"
+
+      class="relative flex h-full w-12 items-center justify-center group ">
+    <Icon name="mdi:message-outline"  class="h-8 w-8 text-gray-400 transition-all duration-200 group-hover:text-white"  />
+    <span class="absolute scale-0 rounded bg-purple-600 p-1 text-white transition-all duration-100 bottom-[-3rem] group-hover:scale-100 text-xs text-nowrap">Get in Touch</span>
+  </button>
+
 </template>
 
 <style scoped>
