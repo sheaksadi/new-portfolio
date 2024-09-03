@@ -16,6 +16,12 @@ export default defineNuxtConfig({
       },
       title: 'Sheak Sadi',
     }
-  }
+  },
+  security: {
+    headers: {
+      referrerPolicy: "same-origin",
+    },
+  },
+
 
 })
