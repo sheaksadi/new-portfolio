@@ -22,6 +22,11 @@ export default defineNuxtConfig({
       referrerPolicy: "same-origin",
     },
   },
-
-
+  $production: {
+    nitro: {
+      preset: 'vercel',
+    },
+  }
 })
+
+
