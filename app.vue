@@ -136,15 +136,7 @@ const sendMessage = async () => {
           <div class="text-gray-500">
             <h1 class="cursor-pointer text-5xl font-bold text-gray-200 md:text-6xl" @click="() => onSectionClick('about')">Sheak Sadi</h1>
             <h2 class="mt-2 text-xl text-gray-400 md:text-2xl">Software Developer</h2>
-            <h2 class="mt-2 transition-all duration-500">
-              Currently working part time at
-              <br class=""/>
-              <a
-                  class="hover:text-gray-300"
-                  href="https://www.netpoint-media.de/"
-                  target="_blank"
-              >Netpoint Media GmbH</a>
-            </h2>
+            
           </div>
           <div class="mb-4">
             <SectionHeader
