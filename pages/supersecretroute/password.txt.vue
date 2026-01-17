@@ -4,6 +4,6 @@ const route = useRoute()
 
 <template>
   <div class="text-white text-4xl p-8">
-    Fuck you Immi !!!  :b
+    Nothing to see here O.o !!!
   </div>
 </template>
